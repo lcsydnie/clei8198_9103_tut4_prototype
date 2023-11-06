@@ -20,10 +20,10 @@ function draw() {
       var y = rad * sin(j);
       var d = dist(0, 0, x, y);
       var interpColor;
-      if (d <= 200) {
-        interpColor = lerpColor(color(196, 99, 85), color(189,120,51), map(d, 0, 200, 0, 1));
+      if (d <= mouseX) {
+        interpColor = lerpColor(color(196, 99, 85), color(189,120,51), map(d, 0, mouseX, 0, 1));
       } else {
-        interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, 200.1, 500, 0, 1));
+        interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, mouseX, 500, 0, 1));
       }
       stroke(interpColor);
       strokeWeight(2);
@@ -77,10 +77,10 @@ function draw() {
       var y = rad * sin(j);
       var d = dist(0, 0, x, y);
       var interpColor;
-      if (d <= 200) {
-        interpColor = lerpColor(color(196, 99, 85), color(220, 147, 47), map(d, 0, 200, 0, 1));
+      if (d <= mouseX) {
+        interpColor = lerpColor(color(196, 99, 85), color(220, 147, 47), map(d, 0, mouseX, 0, 1));
       } else {
-        interpColor = lerpColor(color(220, 147, 47), color(69,106,162), map(d, 200.1, 500, 0, 1));
+        interpColor = lerpColor(color(220, 147, 47), color(69,106,162), map(d, mouseX, 500, 0, 1));
       }
       stroke(interpColor);
       strokeWeight(2);
