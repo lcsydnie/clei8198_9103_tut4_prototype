@@ -1,10 +1,13 @@
 let circles = [];
 let yOffset = 0;
+let color1, color2, color3;
 let performAnimation = false;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   angleMode(DEGREES);
+
 }
 
 function draw() {
@@ -22,9 +25,9 @@ function draw() {
       var d = dist(0, 0, x, y);
       var interpColor;
       if (d <= mouseX) {
-        interpColor = lerpColor(color(196, 99, 85), color(189,120,51), map(d, 0, mouseX, 0, 1));
+        interpColor = lerpColor(color(196, 99, 85), color(189, 120, 51), map(d, 0, mouseX, 0, 1));
       } else {
-        interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, mouseX, 500, 0, 1));
+        interpColor = lerpColor(color(209, 134, 61), color(88, 142, 189), map(d, mouseX, 500, 0, 1));
       }
       stroke(interpColor);
       strokeWeight(2);
@@ -34,7 +37,7 @@ function draw() {
     endShape(CLOSE);
   }
 
-//draw the effect of Ripple Diffusion
+  //draw the effect of Ripple Diffusion
   for (let circle of circles) {
     background(30);
     fill(circle.color);
@@ -82,7 +85,7 @@ function draw() {
       if (d <= mouseX) {
         interpColor = lerpColor(color(196, 99, 85), color(220, 147, 47), map(d, 0, mouseX, 0, 1));
       } else {
-        interpColor = lerpColor(color(220, 147, 47), color(69,106,162), map(d, mouseX, 500, 0, 1));
+        interpColor = lerpColor(color(220, 147, 47), color(69, 106, 162), map(d, mouseX, 500, 0, 1));
       }
       stroke(interpColor);
       strokeWeight(2);
@@ -91,7 +94,9 @@ function draw() {
     }
     endShape(CLOSE);
   }
+  drawTower();
 }
+
 
 //set the mousepressed to activate the interaction of Ripple Diffusion
 function mousePressed() {
@@ -104,6 +109,49 @@ function mousePressed() {
   circles.push(newCircle);
   performAnimation = true;
 }
+
+function drawTower() {
+  color1 = color(32, 55, 69);
+  color2 = color(102, 43, 59);
+  color3 = color(50, 30, 40);
+  fill(120, 75, 50);
+  push();
+  rotateX(-7);
+  translate(0, 200, -10);
+  scale(0.5);
+  beginShape();
+  for (let y = -130; y <= 75; y += 10) {
+    let lerpedColor;
+    if (y < -30) {
+      lerpedColor = lerpColor(color1, color2, map(y, -130, -30, 0, 1));
+    } else {
+      lerpedColor = lerpColor(color2, color3, map(y, -30, 75, 0, 1));
+    }
+    fill(lerpedColor);
+    vertex(-260, 75, -130);
+    vertex(-10, 75, -130);
+    vertex(-15, 75, -100);
+    vertex(-30, 75, -80);
+    vertex(-60, 75, -80);
+    vertex(-70, 75, -65);
+    vertex(-85, 75, -50);
+    vertex(-100, 75, -50);
+    vertex(-105, 75, -10);
+    vertex(-130, 75, 0);
+    vertex(-140, 75, -10);
+    vertex(-140, 75, 50);
+    vertex(-150, 75, 70);
+    vertex(-165, 75, 50);
+    vertex(-170, 75, -10);
+    vertex(-200, 75, -50);
+    vertex(-250, 75, -80);
+    noStroke();
+  }
+  endShape(CLOSE);
+  pop();
+
+}
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
