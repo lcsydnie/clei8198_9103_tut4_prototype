@@ -11,6 +11,7 @@ function draw() {
   background(30);
   rotateX(85);
 
+  //Draw the lake and the the reflection of sunset
   translate(0, 0, -40);
   for (var i = 0; i < 100; i++) {
     beginShape();
@@ -33,8 +34,9 @@ function draw() {
     endShape(CLOSE);
   }
 
-
+//draw the effect of Ripple Diffusion
   for (let circle of circles) {
+    background(30);
     fill(circle.color);
     noStroke();
     ellipse(circle.x, circle.y, circle.radius * 2);
@@ -65,7 +67,7 @@ function draw() {
   }
 
 
-
+  //draw the sky and the sunset
   translate(0, 0, 100);
   rotateX(7);
 
@@ -91,7 +93,7 @@ function draw() {
   }
 }
 
-//set the mousepressed
+//set the mousepressed to activate the interaction of Ripple Diffusion
 function mousePressed() {
   let newCircle = {
     x: mouseX,
