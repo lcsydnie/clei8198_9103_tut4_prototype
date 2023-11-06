@@ -25,8 +25,11 @@ function draw() {
         interpColor = lerpColor(color(209,134,61), color(88,142,189), map(d, 200.1, 500, 0, 1));
       }
       stroke(interpColor);
-      strokeWeight(2);
-      vertex(x, y);
+
+      //Add the effect of Ripple Diffusion to mimic the flow of river
+      let xOffset = sin(frameCount * 5 + i * 10 + j * 2) * 10;
+      vertex(x + xOffset, y);
+      
       noFill();
     }
     endShape(CLOSE);
