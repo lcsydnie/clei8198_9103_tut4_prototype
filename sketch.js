@@ -3,11 +3,9 @@ let yOffset = 0;
 let color1, color2, color3;
 let performAnimation = false;
 
-
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   angleMode(DEGREES);
-
 }
 
 function draw() {
@@ -61,14 +59,13 @@ function draw() {
         }
         stroke(interpColor);
         strokeWeight(2);
-        let xOffset = sin(frameCount * 5 + i * 10 + j * 2) * 10;
+        let xOffset = sin(frameCount * 10 + i * 10 + j * 2) * 10;
         vertex(x + xOffset, y);
         noFill();
       }
       endShape(CLOSE);
     }
   }
-
 
   //draw the sky and the sunset
   translate(0, 0, 100);
@@ -94,9 +91,8 @@ function draw() {
     }
     endShape(CLOSE);
   }
-  drawTower();
+  drawChurch();
 }
-
 
 //set the mousepressed to activate the interaction of Ripple Diffusion
 function mousePressed() {
@@ -110,7 +106,8 @@ function mousePressed() {
   performAnimation = true;
 }
 
-function drawTower() {
+//make the element of Church
+function drawChurch() {
   color1 = color(32, 55, 69);
   color2 = color(102, 43, 59);
   color3 = color(50, 30, 40);
@@ -149,9 +146,7 @@ function drawTower() {
   }
   endShape(CLOSE);
   pop();
-
 }
-
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
